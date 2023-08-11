@@ -2,6 +2,6 @@
 
 ## Getting Started
 ```js
-   install
+   npm install
    npm run dev
 ```

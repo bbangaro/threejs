@@ -1,8 +1,8 @@
-import { Employee } from "./pages/employee";
+import { Main } from "./pages/Main";
 import "./App.css";
 
 function App() {
-  return <Employee />;
+  return <Main />;
 }
 
 export default App;

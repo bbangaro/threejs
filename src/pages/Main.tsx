@@ -6,32 +6,34 @@ import { Suspense } from "react";
 import { Circle, Environment, OrbitControls, Stats } from "@react-three/drei";
 
 const Model = () => {
-  const gltf = useLoader(GLTFLoader, "src/assets/scene.gltf");
+  const gltf = useLoader(GLTFLoader, "src/assets/scene.gltf", (gltf) => {
+    console.log(gltf);
+  });
 
   return (
     <>
-      <directionalLight position={[3.3, 1.0, 4.4]} castShadow />
+      <ambientLight />
+      <directionalLight position={[0, 0, 0]} castShadow />
       <primitive
         object={gltf.scene}
-        position={[10, 1, 10]}
+        position={[0, 0, 0]}
+        // scale={[2, 2, 2]}
         children-0-castShadow
       />
       {/* <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow> */}
       <meshStandardMaterial />
-      {/* </Circle> */}
-      <OrbitControls target={[1, 1, 1]} />
-      {/* <axesHelper args={[]} /> */}
-      <Stats />
+      <OrbitControls target={[0, 0, 0]} />
+      {/* <Stats /> */}
+      {/* <Environment preset="forest" background /> */}
     </>
   );
 };
 
 export const Main = () => {
   return (
-    <Canvas camera={{ position: [10, -0, 10] }}>
-      <Suspense>
+    <Canvas camera={{ position: [0, 0, 2], isPerspectiveCamera: true }}>
+      <Suspense fallback={null}>
         <Model />
-        <Environment preset="forest" background />
       </Suspense>
     </Canvas>
   );
